@@ -19,20 +19,33 @@
         "Programming Languages"
     ],
     "activationEvents": [
-        "onLanguage:go"
+        "onLanguage:goptos"
     ],
     "main": "out/extension",
     "contributes": {
+        "configurationDefaults": {
+            "[goptos]": {
+                "editor.semanticHighlighting.enabled": true,
+                "editor.semanticTokenColorCustomizations": {
+                    "enabled": true,
+                    "rules": {
+                        "View": {
+                            "foreground": "#1a2836",
+                            "fontStyle": "bold"
+                        }
+                    }
+                }
+            }
+        },
         "languages": [
             {
-                "id": "go",
+                "id": "goptos",
                 "aliases": [
-                    "go"
+                    "goptos"
                 ],
                 "extensions": [
-                    ".go"
-                ],
-                "configuration": "./goptos.configuration.json"
+                    ".goptos"
+                ]
             }
         ]
     },

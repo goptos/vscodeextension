@@ -8,7 +8,7 @@ let languageClient: vscode_lc.LanguageClient;
 
 export function activate(context: vscode.ExtensionContext) {
 	const exe: vscode_lc.Executable = {
-        command: "c:/Users/algonz/repo/goptos/lsp/main.exe",
+        command: "c:/Users/algonz/repo/goptos/lsp/lsp.exe",
         transport: vscode_lc.TransportKind.stdio
     }
     const serverOptions: vscode_lc.ServerOptions = {
@@ -16,9 +16,11 @@ export function activate(context: vscode.ExtensionContext) {
 		debug: exe
     }
     let clientOptions: vscode_lc.LanguageClientOptions = {
-        documentSelector: ['go'],
+        documentSelector: ['goptos'],
         synchronize: {
-            fileEvents: vscode.workspace.createFileSystemWatcher('**/*.go')
+            fileEvents: [
+                vscode.workspace.createFileSystemWatcher('**/*.goptos')
+            ]
         }
     }
     languageClient = new vscode_lc.LanguageClient('Goptos', serverOptions, clientOptions);
